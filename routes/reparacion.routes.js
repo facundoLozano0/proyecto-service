@@ -4,7 +4,7 @@ const reparacionController = require('../controllers/reparacion.controller');
 const authMiddleware = require('../middlewares/authMiddleware');
 const checkRole = require('../middlewares/checkRole');
 
-// Crear reparación: solo técnico o admin
+// Crear reparación (solo admin y técnico)
 router.post(
   '/',
   authMiddleware,
@@ -12,7 +12,7 @@ router.post(
   reparacionController.crearReparacion
 );
 
-// Actualizar estado (opcional, si tienes esa función)
+// Actualizar estado
 router.put(
   '/:id',
   authMiddleware,
@@ -28,7 +28,7 @@ router.put(
   reparacionController.actualizarSalida
 );
 
-// Ver todas las reparaciones: acceso público (o protegido si querés)
+// Obtener todas las reparaciones
 router.get('/', reparacionController.obtenerReparaciones);
 
 module.exports = router;
